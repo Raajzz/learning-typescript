@@ -1,0 +1,8 @@
+- A language building up on JavaScript
+- Adds new features + Advantages to JavaScript
+- Browser can't execute it. It has to be compiled to JavaScript.
+- New features that are not in JS are compiled to JS "workaround". Nicer syntax and stuff. 
+- Adds Types, it also gives you error checking. Errors which can be identified before running the code itself.
+- We can add functions that checks these stuff during run-time or add user validators but it'll be better if we catch errors during run-time itself.
+- Getting strings when we try to access the form which we try to add will result in a bug.
+- Now, this package is a transpiler that transpile TypeScript into JavaScript.

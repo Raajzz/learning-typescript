@@ -1,0 +1,7 @@
+- Types
+- TypeScript built-in IDEs or Editors will also help find errors before run-time.
+- Next-gen JavaScript Features (compiled down for older browsers)
+- Interface and Generics
+- Meta-programming features like decorators.
+- Rich configurations options.
+- Modern Tooling even in non-script projects.m
