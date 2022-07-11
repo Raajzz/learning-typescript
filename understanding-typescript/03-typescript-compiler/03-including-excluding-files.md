@@ -1,0 +1,3 @@
+- Adding commands to tsconfig will allow us to change what should be compiled.
+- With include you can given directories too.
+- With files you can just give the name of the files you wanna compile.

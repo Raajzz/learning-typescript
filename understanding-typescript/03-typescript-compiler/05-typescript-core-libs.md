@@ -1,0 +1,2 @@
+- If the lib options are not specified then the default stuff of `target version` and DOM apis are assumed to exist.
+- If you uncomment lib then you're needed to provide the libraries that should be included.

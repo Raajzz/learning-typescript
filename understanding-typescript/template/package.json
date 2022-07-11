@@ -11,8 +11,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc app.ts",
-    "server": "lite-server"
+    "start": "tsc -w",
+    "start-one": "tsc app.ts -w",
+    "server": "lite-server",
+    "init-ts": "tsc --init"
   },
   "author": "",
   "license": "ISC"

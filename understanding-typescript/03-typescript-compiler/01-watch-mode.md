@@ -1,0 +1,1 @@
+This command `tsc app.ts -w` will watch for any changes and recompile.
