@@ -1,0 +1,1 @@
+- Will prevent generation of JS files which are error prone. Now, an error in a single .ts file will prevent generation of any .js file.

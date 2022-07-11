@@ -1,0 +1,2 @@
+- source maps is a compiler config that allows us to get .ts files in the browser too.
+- This'll allow us to debug .ts files directly without needing to debug the counterpart .js files and get back to .ts files.

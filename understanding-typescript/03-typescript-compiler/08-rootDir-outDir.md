@@ -1,0 +1,5 @@
+- We'll have all the source `.ts` files in the source and we'll have `.js`
+- Without outDir, TypeScript
+- `removeComments` will remove all the comments on the `.ts` file.
+- `noEmit` to just to check .ts file
+- `downlevelIteration`, sometimes loops written in .ts and targeted to older version of Js might work differently if writing loops produces some weird quirky output turn this on, will lead to verbose code but atleast the output will be correct.
