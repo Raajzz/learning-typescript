@@ -1,3 +1,5 @@
 - Explanation about Classes and Interfaces.
 - Classes and Inheritance
-- Interfaces and their features
+- Interfaces 
+  - How they're compiled to JS
+  - Features of interfaces
