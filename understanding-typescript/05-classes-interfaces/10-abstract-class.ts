@@ -5,7 +5,7 @@ Force the developers who are working with a certain class to override that metho
 */
 
 abstract class AbstractClass {
-  abstract describe(): string;
+  protected abstract describe(): string;
   normal() {
     return "Normal from AbstractClass";
   }
