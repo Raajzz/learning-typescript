@@ -1,48 +1,36 @@
-// extend with | means, either extend something that satisfies all the properties of string or number or boolean
-// extend with & means, extend a primitive type that satisfied all the properties of string or number boolean, therefore there could be no type, hence the type never.
-// `never` means values will never occur (which makes sense as there could be no primitive type that can satisfy all primitive types)
+// Generic utility types
 
-class DataStorage<T extends string | boolean | number> {
-  private data: T[] = [];
+// partial basically makes every type in our object-type definition as optional, therefore typescript won't complain if something is not there. But you can't return the object as partial<objectType> because it is of type partial<objectType> | therefore typecast it!
 
-  addItem(item: T) {
-    this.data.push(item);
-  }
-
-  removeItem(item: T) {
-    const pos = this.data.indexOf(item);
-    if (pos === -1) {
-      return;
-    }
-    this.data.splice(this.data.indexOf(item), 1);
-  }
-
-  getItems() {
-    return [...this.data];
-  }
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
 }
 
-const textStorage = new DataStorage<string>();
-textStorage.addItem("John");
-textStorage.addItem("Jane");
-textStorage.addItem("Slim");
-textStorage.addItem("Shady");
-textStorage.removeItem("Jane");
-console.log(textStorage.getItems());
+const createCourseGoal = (
+  title: string,
+  description: string,
+  completeUntil: Date
+): CourseGoal => {
+  // let courseGoal:CourseGoal = {} - complains because {} !== CourseGoal type
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.completeUntil = completeUntil;
+  return courseGoal as CourseGoal;
+};
 
-// we can also add numbers or string | numbers
-// it gives us the ability to be flexible at the same time make our code strongly typed
+// readOnly utility type, this is different from const
+// with const array you can push stuff
+// with readonly array you can't push stuff
 
-// primitive type !== object type, there's a lot more to it (like passing references/copies, not doing deep searching and doing a simple reference searching and stuff like that)
+const names: /*ReadonlyArray<string> or  Readonly<string[]> or */ Readonly<
+  Array<string>
+> = ["Max", "Anna"];
+names.push("Ryan"); // error
+names.pop(); // error
 
-/*
+// these generic utility types takes our types and do something with it
 
-const objectStorage = new DataStorage<object>();
-objectStorage.addItem({ name: "max" });
-objectStorage.addItem({ name: "manu" });
-objectStorage.removeItem({ name: "max" }); // here we're creating a new object whose reference is something else that the addItem's {name: "max"} therefore reference checking will lead to bugs, therefore we only accept primitive types. This is the type-safety that typescript provides. Doesn't delete anything so the whole array of objects will be returned
-console.log(objectStorage.getItems());
-
-*/
-
-// generic programming -> flexibility and type-safety
+// union type when you want to use different types for every function call
+// generic types lock in a function call (You have created the object with X stick to X alone) - union types means everytime you call it use something else.
