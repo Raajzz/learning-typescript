@@ -1,36 +1,36 @@
-// Generic utility types
+// property decorators
 
-// partial basically makes every type in our object-type definition as optional, therefore typescript won't complain if something is not there. But you can't return the object as partial<objectType> because it is of type partial<objectType> | therefore typecast it!
+// depending upon where you add the decorator function it'll get parameters
 
-interface CourseGoal {
-  title: string;
-  description: string;
-  completeUntil: Date;
+function Logger(target: any, propertyName: string | Symbol) {
+  console.log("Inside the property logger");
+
+  console.log(target);
+  console.log(propertyName);
+} // this is executed when the class gets registered by JavaScript
+
+function ClassLogger(_: Function) {
+  console.log("Inside the class logger");
 }
 
-const createCourseGoal = (
-  title: string,
-  description: string,
-  completeUntil: Date
-): CourseGoal => {
-  // let courseGoal:CourseGoal = {} - complains because {} !== CourseGoal type
-  let courseGoal: Partial<CourseGoal> = {};
-  courseGoal.title = title;
-  courseGoal.completeUntil = completeUntil;
-  return courseGoal as CourseGoal;
-};
+@ClassLogger
+class Product {
+  @Logger // adding like this, sets the target to the prototype of the object that was created | target -> constructor function
+  // second name is the propertyName
+  title: string;
+  @Logger
+  price: number;
 
-// readOnly utility type, this is different from const
-// with const array you can push stuff
-// with readonly array you can't push stuff
+  public set setPrice(price: number) {
+    this.price = price;
+  }
 
-const names: /*ReadonlyArray<string> or  Readonly<string[]> or */ Readonly<
-  Array<string>
-> = ["Max", "Anna"];
-names.push("Ryan"); // error
-names.pop(); // error
+  constructor(t: string, p: number) {
+    this.title = t;
+    this.price = p;
+  }
 
-// these generic utility types takes our types and do something with it
+  getPriceWithTax(tax: number) {}
+}
 
-// union type when you want to use different types for every function call
-// generic types lock in a function call (You have created the object with X stick to X alone) - union types means everytime you call it use something else.
+// Logger executes before ClassLogger
